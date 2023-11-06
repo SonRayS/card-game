@@ -1,0 +1,85 @@
+@charset "UTF-8";
+* {
+    margin: 0;
+    padding: 0;
+}
+
+@font-face {
+    font-family: "stratosskyengweb";
+    src: url("fonts/stratosskyengweb-regular.woff2") format("woff2"),
+        url("fonts/stratosskyengweb-regular.woff") format("woff");
+}
+
+body {
+    font-family: "stratosskyengweb", sans-serif;
+    background-color: blue;
+}
+
+li {
+    list-style-type: none;
+}
+
+.difficultySelection {
+    background-color: rgb(188, 255, 255);
+    border-radius: 15px;
+    width: 480px;
+    height: 460px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.difficultySelection div {
+    margin: 10px;
+}
+
+.main {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -230px 0 0 -240px;
+}
+
+.difficultySelection_form {
+    width: 208px;
+    height: 96px;
+    top: 210px;
+}
+
+.difficultySelection_form-text {
+    font-family: "stratosskyengweb";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 48px;
+    text-align: center;
+    font-feature-settings: "pnum" on, "lnum" on;
+    color: #004980;
+}
+
+.difficultySelection_form-btn {
+    background: #7ac100;
+    border-radius: 12px;
+    border-color: transparent;
+    width: 246px;
+    height: 48px;
+    font-family: "stratosskyengweb";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 32px;
+    text-align: center;
+    font-feature-settings: "pnum" on, "lnum" on;
+    color: #ffffff;
+}
+
+.radio-toolbar_input {
+    display: none;
+}
+
+.radio-toolbar label {
+    margin: 14px;
+}
