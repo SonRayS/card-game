@@ -6,8 +6,10 @@ export function getElement() {
     const minEl = document.querySelector(".headFormField-timer_time-min");
     const secEl = document.querySelector(".headFormField-timer_time-sec");
     const start = document.querySelector(".js-btm-reset");
+    const game = document.getElementById("game");
 
     const module = {
+        game: game,
         start: start,
         minEl: minEl,
         secEl: secEl,

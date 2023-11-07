@@ -35,6 +35,9 @@ export function formGameField({ appEl, lvl, pairs }) {
                                 <button class="difficultySelection_form-btn btn js-btm-reset">Начать заново</button>
                         </div>
                 </div>
+                <div id="game" class="center">
+
+                </div>
                 `;
 
     appEl.innerHTML = appHtml;
@@ -97,6 +100,7 @@ export function formGameField({ appEl, lvl, pairs }) {
     const cardsNumber = pairs;
     const cardsNumberArray = [];
 
+    // sort
     for (let i = 1; i <= cardsNumber; i++) {
         cardsNumberArray.push(i, i);
     }
@@ -109,8 +113,18 @@ export function formGameField({ appEl, lvl, pairs }) {
         cardsNumberArray[randomPoint] = temp;
     }
 
+    // sort
+
+    // create cards
+
     for (const i of cardsNumberArray) {
-        console.log(i);
+        let card = document.createElement("div");
+        card.textContent = i;
+
+        getElement().game.append(card);
     }
+
+    // create cards
+
     /* ------------------------------------------------- */
 }

@@ -117,7 +117,8 @@ li {
 }
 
 .headForm {
-    margin-top: 50px;
+    margin-top: 48px;
+    margin-bottom: 48px;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
