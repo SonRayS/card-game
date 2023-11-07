@@ -11,7 +11,7 @@ export function formGameField({ appEl, lvl, pairs }) {
     /* ------------------------------------------------- */
 
     const appHtml = `
-                <div class="headForm center">
+                <div class="headForm">
                         <div class="headFormField">
                                 <div class="headFormField-timer">
                                         <div class="headFormField-timer_title">
@@ -32,11 +32,13 @@ export function formGameField({ appEl, lvl, pairs }) {
                         </div>
 
                         <div class="headForm-btn buttons">
-                                <button class="difficultySelection_form-btn btn js-btm-reset">Начать заново</button>
+                                <button class="btn js-btm-reset">Начать заново</button>
                         </div>
                 </div>
-                <div id="game" class="center">
+                <div class="container">
+                        <div id="game" class="cards">
 
+                        </div>
                 </div>
                 `;
 
@@ -98,30 +100,51 @@ export function formGameField({ appEl, lvl, pairs }) {
     /* ------------------------------------------------- */
 
     const cardsNumber = pairs;
-    const cardsNumberArray = [];
-
-    // sort
-    for (let i = 1; i <= cardsNumber; i++) {
-        cardsNumberArray.push(i, i);
-    }
-
-    for (let i = 0; i < cardsNumberArray.length; i++) {
-        const randomPoint = Math.floor(Math.random() * cardsNumberArray.length);
-
-        const temp = cardsNumberArray[i];
-        cardsNumberArray[i] = cardsNumberArray[randomPoint];
-        cardsNumberArray[randomPoint] = temp;
-    }
-
-    // sort
+    const cardsNumberArray = [
+        "6b.png",
+        "6c.png",
+        "6k.png",
+        "6c.png",
+        "7b.png",
+        "7c.png",
+        "7k.png",
+        "7c.png",
+        "8b.png",
+        "8c.png",
+        "8k.png",
+        "8c.png",
+        "9b.png",
+        "9c.png",
+        "9k.png",
+        "9c.png",
+        "10b.png",
+        "10c.png",
+        "10k.png",
+        "10c.png",
+        "Jb.png",
+        "Jc.png",
+        "Jk.png",
+        "Jc.png",
+        "Qb.png",
+        "Qc.png",
+        "Qk.png",
+        "Qc.png",
+        "Kb.png",
+        "Kc.png",
+        "Kk.png",
+        "Kc.png",
+        "Ab.png",
+        "Ac.png",
+        "Ak.png",
+        "Ac.png",
+    ];
 
     // create cards
 
     for (const i of cardsNumberArray) {
-        let card = document.createElement("div");
-        card.textContent = i;
-
-        getElement().game.append(card);
+        let img = document.createElement("img");
+        img.src = `./img/${i}`;
+        getElement().game.appendChild(img);
     }
 
     // create cards

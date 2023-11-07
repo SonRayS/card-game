@@ -11,8 +11,8 @@
 }
 
 .center {
-    padding-left: calc(50% - 600px);
-    padding-right: calc(50% - 600px);
+    padding-left: calc(50% - 550px);
+    padding-right: calc(50% - 550px);
 }
 
 body {
@@ -117,8 +117,8 @@ li {
 }
 
 .headForm {
-    margin-top: 48px;
-    margin-bottom: 48px;
+    margin-top: 32px;
+    margin-bottom: 32px;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -134,4 +134,35 @@ li {
     display: flex;
     justify-content: flex-end;
     margin-right: 4px;
+}
+
+.cards {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: repeat(9, 1fr);
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: stretch;
+}
+
+.js-btm-reset {
+    width: 246px;
+    height: 50px;
+    background: #7ac100;
+    border-radius: 12px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 32px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    font-feature-settings: "pnum" on, "lnum" on;
+    color: #ffffff;
 }
