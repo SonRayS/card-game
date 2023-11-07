@@ -4,6 +4,7 @@ import {
     getSaveSelectLvl,
     removeSaveSelectLvl,
 } from "./localStorage.js";
+import { renderCardsForm } from "./renderFormCards.js";
 
 export function formGameField({ appEl, lvl, pairs }) {
     /* ------------------------------------------------- */
@@ -36,8 +37,11 @@ export function formGameField({ appEl, lvl, pairs }) {
                         </div>
                 </div>
                 <div class="container">
-                        <div id="game" class="cards">
-
+                ${
+                    pairs
+                        ? renderCardsForm(pairs)
+                        : alert("ВЫ не выбрали сложность !!!")
+                }                
                         </div>
                 </div>
                 `;
@@ -99,7 +103,6 @@ export function formGameField({ appEl, lvl, pairs }) {
     /* CardLogic */
     /* ------------------------------------------------- */
 
-    const cardsNumber = pairs;
     const cardsNumberArray = [
         "6b.png",
         "6c.png",
@@ -139,15 +142,25 @@ export function formGameField({ appEl, lvl, pairs }) {
         "Ac.png",
     ];
 
-    // create cards
+    const cardsArray = [];
 
-    for (const i of cardsNumberArray) {
+    function shuffle(array) {
+        array.sort(() => Math.random() - 0.5);
+    }
+
+    shuffle(cardsNumberArray);
+
+    for (let i = 1; i <= pairs; i++) {
+        cardsArray.push(cardsNumberArray[i], cardsNumberArray[i]);
+    }
+
+    shuffle(cardsArray);
+
+    for (const i of cardsArray) {
         let img = document.createElement("img");
         img.src = `./img/${i}`;
         getElement().game.appendChild(img);
     }
-
-    // create cards
 
     /* ------------------------------------------------- */
 }

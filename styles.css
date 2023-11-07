@@ -117,8 +117,8 @@ li {
 }
 
 .headForm {
-    margin-top: 32px;
-    margin-bottom: 32px;
+    margin-top: 52px;
+    margin-bottom: 52px;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -136,7 +136,19 @@ li {
     margin-right: 4px;
 }
 
-.cards {
+.cards-3 {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: repeat(3, 0.1fr);
+}
+
+.cards-6 {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: repeat(6, 0.5fr);
+}
+
+.cards-9 {
     display: grid;
     gap: 24px;
     grid-template-columns: repeat(9, 1fr);
@@ -147,7 +159,7 @@ li {
     justify-content: center;
     flex-wrap: wrap;
     flex-direction: column;
-    align-content: stretch;
+    align-content: center;
 }
 
 .js-btm-reset {
