@@ -61,15 +61,27 @@ export function renderStartForm({ appEl }) {
     function selectBtnLvl() {
         getElement().selectBtnOne.addEventListener("click", () => {
             saveSelectLvl(1);
-            formGameField({ lvl: getSaveSelectLvl() });
+            formGameField({
+                appEl: getElement().appElement,
+                lvl: getSaveSelectLvl(),
+                pairs: 3,
+            });
         });
         getElement().selectBtnTwo.addEventListener("click", () => {
             saveSelectLvl(2);
-            formGameField({ lvl: getSaveSelectLvl() });
+            formGameField({
+                appEl: getElement().appElement,
+                lvl: getSaveSelectLvl(),
+                pairs: 6,
+            });
         });
         getElement().selectBtnTree.addEventListener("click", () => {
             saveSelectLvl(3);
-            formGameField({ lvl: getSaveSelectLvl() });
+            formGameField({
+                appEl: getElement().appElement,
+                lvl: getSaveSelectLvl(),
+                pairs: 9,
+            });
         });
     }
     selectBtnLvl();
