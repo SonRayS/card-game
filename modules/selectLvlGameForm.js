@@ -1,3 +1,11 @@
+import { getElement } from "./getElementById.js";
+import {
+    saveSelectLvl,
+    getSaveSelectLvl,
+    removeSaveSelectLvl,
+} from "./localStorage.js";
+import { formGameField } from "./mainGameForm.js";
+
 export function renderStartForm({ appEl }) {
     const appHtml = `
     <div class="difficultySelection main">
@@ -50,11 +58,19 @@ export function renderStartForm({ appEl }) {
 
     appEl.innerHTML = appHtml;
 
-    /*     function clickBtn() {
-        test = document.getElementById("radio2");
-        test.addEventListener("click", () => {
-            console.log("HallowWorld");
+    function selectBtnLvl() {
+        getElement().selectBtnOne.addEventListener("click", () => {
+            saveSelectLvl(1);
+            formGameField({ lvl: getSaveSelectLvl() });
+        });
+        getElement().selectBtnTwo.addEventListener("click", () => {
+            saveSelectLvl(2);
+            formGameField({ lvl: getSaveSelectLvl() });
+        });
+        getElement().selectBtnTree.addEventListener("click", () => {
+            saveSelectLvl(3);
+            formGameField({ lvl: getSaveSelectLvl() });
         });
     }
-    clickBtn(); */
+    selectBtnLvl();
 }

@@ -83,3 +83,10 @@ li {
 .radio-toolbar label {
     margin: 14px;
 }
+
+.radio-toolbar img:hover {
+    border: solid rgb(30, 0, 255) 4px;
+    border-radius: 12px;
+    transform: scale(1.2);
+    transition: transform 0.6s;
+}
