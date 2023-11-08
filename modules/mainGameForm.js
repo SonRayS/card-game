@@ -165,10 +165,13 @@ export function formGameField({ appEl, lvl, pairs }) {
         let img = document.createElement("img");
         img.classList.add("cardHide");
         img.setAttribute("id", `idName${i}`);
+
         getElement().game.append(img);
+        img.classList.add("flip-scale-up-hor");
 
         img.addEventListener("click", function () {
             if (firstCard !== null && secundCard !== null) {
+                img.classList.remove("flip-scale-up-hor");
                 console.log("Карточки не совпали");
                 firstCard.setAttribute("src", "./img/hide.png");
                 secundCard.setAttribute("src", "./img/hide.png");
@@ -179,17 +182,17 @@ export function formGameField({ appEl, lvl, pairs }) {
             console.log("карта по которой клик", img);
 
             if (firstCard === null) {
+                img.classList.remove("flip-scale-up-hor");
                 firstCard = img;
-                console.log("firstCard", firstCard.src);
-                firstCard.classList.remove("cardHide");
             } else if (secundCard === null) {
+                img.classList.remove("flip-scale-up-hor");
                 secundCard = img;
-                console.log("secundCard", secundCard.src);
-                secundCard.classList.remove("cardHide");
             }
 
             if (firstCard !== null && secundCard !== null) {
                 console.log("2 cards open");
+
+                img.classList.remove("flip-scale-up-hor");
 
                 if (firstCard.src === secundCard.src) {
                     console.log("Карточки совпали");
