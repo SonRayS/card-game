@@ -1,10 +1,4 @@
 import { getElement } from "./getElementById.js";
-import {
-    saveSelectLvl,
-    getSaveSelectLvl,
-    removeSaveSelectLvl,
-} from "./localStorage.js";
-import { renderCardsForm } from "./renderFormCards.js";
 
 export function formGameField({ appEl, lvl, pairs }) {
     /* ------------------------------------------------- */
@@ -39,7 +33,7 @@ export function formGameField({ appEl, lvl, pairs }) {
                 <div class="container">
                 ${
                     pairs
-                        ? renderCardsForm(pairs)
+                        ? `<div id="game" class="game">`
                         : alert("ВЫ не выбрали сложность !!!")
                 }                
                         </div>
@@ -103,6 +97,7 @@ export function formGameField({ appEl, lvl, pairs }) {
     /* CardLogic */
     /* ------------------------------------------------- */
 
+    //create ar
     const cardsNumberArray = [
         "6b.png",
         "6c.png",
@@ -153,46 +148,71 @@ export function formGameField({ appEl, lvl, pairs }) {
 
     shuffle(cardsNumberArray);
 
-    for (let i = 1; i <= pairs; ++i) {
-        cardsArray.push(cardsNumberArray[i], cardsNumberArray[i]);
+    for (let el = 1; el <= pairs; ++el) {
+        cardsArray.push(cardsNumberArray[el], cardsNumberArray[el]);
     }
 
     shuffle(cardsArray);
     console.log(cardsArray);
+    //create grid
+
+    switch (pairs) {
+        case 3:
+            game.style = `grid-template-columns: repeat(3, 1fr);`;
+            break;
+        case 6:
+            game.style = `grid-template-columns: repeat(4, 1fr);`;
+            break;
+        case 9:
+            game.style = `grid-template-columns: repeat(9, 2fr);`;
+            break;
+    }
+
     //create cards
 
     for (const i of cardsArray) {
         let img = document.createElement("img");
-        img.classList.add("cardHide");
-        img.setAttribute("id", `idName${i}`);
+        img.src = `./img/${i}`;
+
+        function startHide() {
+            img.setAttribute("src", "./img/hide.png");
+            img.classList.add("flip-scale-up-hor");
+            img.classList.add("cardHide");
+            img.setAttribute("id", "checkCards");
+        }
+
+        setTimeout(startHide, 1000);
 
         getElement().game.append(img);
-        img.classList.add("flip-scale-up-hor");
 
         img.addEventListener("click", function () {
+            if (document.getElementById("checkCards") !== null) {
+                console.log("Live");
+            } else {
+                console.log("The element does not exist");
+            }
+
+            img.src = `./img/${i}`;
+            console.log("карта по которой клик", img);
+
             if (firstCard !== null && secundCard !== null) {
-                img.classList.remove("flip-scale-up-hor");
                 console.log("Карточки не совпали");
                 firstCard.setAttribute("src", "./img/hide.png");
                 secundCard.setAttribute("src", "./img/hide.png");
                 firstCard = null;
                 secundCard = null;
             }
-            img.src = `./img/${i}`;
-            console.log("карта по которой клик", img);
 
             if (firstCard === null) {
-                img.classList.remove("flip-scale-up-hor");
                 firstCard = img;
+                firstCard.classList.add("flip-scale-up-hor");
             } else if (secundCard === null) {
-                img.classList.remove("flip-scale-up-hor");
                 secundCard = img;
+                secundCard.classList.add("flip-scale-up-hor");
             }
 
             if (firstCard !== null && secundCard !== null) {
                 console.log("2 cards open");
-
-                img.classList.remove("flip-scale-up-hor");
 
                 if (firstCard.src === secundCard.src) {
                     console.log("Карточки совпали");
@@ -202,11 +222,15 @@ export function formGameField({ appEl, lvl, pairs }) {
                     secundCard = null;
                 }
             }
+
+            if (cardsArray.length === getElement().hides.length) {
+                setTimeout(function () {
+                    alert("We win!");
+                }, 400);
+            } else {
+                console.log("You losee");
+            }
         });
     }
-
-    //create cards
-    /* ------------------------------------------------- */
 }
-/* img.classList.add("hide"); */
-/* img.setAttribute("src", "https://picsum.photos/100"); */
+/* firstCard.parentNode.removeChild(firstCard); */

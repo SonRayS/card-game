@@ -1,5 +1,6 @@
 export function getElement() {
     const appElement = document.getElementById("app");
+    const selectBtn = document.querySelector(".radio-toolbar_input");
     const selectBtnOne = document.getElementById("radio1");
     const selectBtnTwo = document.getElementById("radio2");
     const selectBtnTree = document.getElementById("radio3");
@@ -7,12 +8,23 @@ export function getElement() {
     const secEl = document.querySelector(".headFormField-timer_time-sec");
     const start = document.querySelector(".js-btm-reset");
     const game = document.getElementById("game");
+    const startGame = document.querySelector(".startGame");
+    const lableButton1 = document.querySelector(".lableButton1");
+    const lableButton2 = document.querySelector(".lableButton2");
+    const lableButton3 = document.querySelector(".lableButton3");
+    const hides = document.querySelectorAll(".hide");
 
     const module = {
+        hides: hides,
+        lableButton1: lableButton1,
+        lableButton2: lableButton2,
+        lableButton3: lableButton3,
+        startGame: startGame,
         game: game,
         start: start,
         minEl: minEl,
         secEl: secEl,
+        selectBtn: selectBtn,
         appElement: appElement,
         selectBtnOne: selectBtnOne,
         selectBtnTwo: selectBtnTwo,
