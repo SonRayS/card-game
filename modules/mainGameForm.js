@@ -1,4 +1,6 @@
 import { getElement } from "./getElementById.js";
+import { renderLoseForm } from "./loseGameForm.js";
+import { renderWinForm } from "./winGameForm.js";
 
 export function formGameField({ appEl, lvl, pairs }) {
     /* ------------------------------------------------- */
@@ -185,52 +187,66 @@ export function formGameField({ appEl, lvl, pairs }) {
 
         getElement().game.append(img);
 
-        img.addEventListener("click", function () {
-            if (document.getElementById("checkCards") !== null) {
-                console.log("Live");
-            } else {
-                console.log("The element does not exist");
-            }
-
-            img.src = `./img/${i}`;
-            console.log("карта по которой клик", img);
-
-            if (firstCard !== null && secundCard !== null) {
-                console.log("Карточки не совпали");
-                firstCard.setAttribute("src", "./img/hide.png");
-                secundCard.setAttribute("src", "./img/hide.png");
-                firstCard = null;
-                secundCard = null;
-            }
-
-            if (firstCard === null) {
-                firstCard = img;
-                firstCard.classList.add("flip-scale-up-hor");
-            } else if (secundCard === null) {
-                secundCard = img;
-                secundCard.classList.add("flip-scale-up-hor");
-            }
-
-            if (firstCard !== null && secundCard !== null) {
-                console.log("2 cards open");
-
-                if (firstCard.src === secundCard.src) {
-                    console.log("Карточки совпали");
-                    firstCard.classList.add("hide");
-                    secundCard.classList.add("hide");
-                    firstCard = null;
-                    secundCard = null;
+        function startClick() {
+            img.addEventListener("click", function () {
+                if (document.getElementById("checkCards") !== null) {
+                    console.log("Live");
+                } else {
+                    console.log("The element does not exist");
                 }
-            }
 
-            if (cardsArray.length === getElement().hides.length) {
-                setTimeout(function () {
-                    alert("We win!");
-                }, 400);
-            } else {
-                console.log("You losee");
-            }
-        });
+                img.src = `./img/${i}`;
+                console.log("карта по которой клик", img);
+
+                if (firstCard !== null && secundCard !== null) {
+                    console.log("Карточки не совпали");
+                    clearInterval(interval);
+                    renderLoseForm({
+                        appEl,
+                        min: getElement().minEl.innerHTML,
+                        sec: getElement().secEl.innerHTML,
+                    });
+                }
+
+                if (firstCard === null) {
+                    firstCard = img;
+                    firstCard.classList.add("flip-scale-up-hor");
+                } else if (secundCard === null) {
+                    secundCard = img;
+                    secundCard.classList.add("flip-scale-up-hor");
+                }
+
+                if (firstCard !== null && secundCard !== null) {
+                    console.log("2 cards open");
+
+                    if (firstCard.src === secundCard.src) {
+                        console.log("Карточки совпали");
+                        firstCard.classList.add("hide");
+                        secundCard.classList.add("hide");
+                        firstCard = null;
+                        secundCard = null;
+                    }
+                }
+
+                if (cardsArray.length === getElement().hides.length) {
+                    setTimeout(function () {
+                        clearInterval(interval);
+                        renderWinForm({
+                            appEl,
+                            min: getElement().minEl.innerHTML,
+                            sec: getElement().secEl.innerHTML,
+                        });
+                    }, 400);
+                } else {
+                    console.log("You losee");
+                }
+            });
+        }
+        setTimeout(startClick, 5000);
     }
 }
 /* firstCard.parentNode.removeChild(firstCard); */
+/* firstCard.setAttribute("src", "./img/hide.png");
+   secundCard.setAttribute("src", "./img/hide.png");
+   firstCard = null;
+   secundCard = null; */

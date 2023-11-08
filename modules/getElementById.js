@@ -13,8 +13,10 @@ export function getElement() {
     const lableButton2 = document.querySelector(".lableButton2");
     const lableButton3 = document.querySelector(".lableButton3");
     const hides = document.querySelectorAll(".hide");
+    const replay = document.querySelector(".difficultySelection_form-btn");
 
     const module = {
+        replay: replay,
         hides: hides,
         lableButton1: lableButton1,
         lableButton2: lableButton2,
