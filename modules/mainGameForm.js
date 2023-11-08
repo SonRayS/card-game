@@ -181,7 +181,7 @@ export function formGameField({ appEl, lvl, pairs }) {
             img.setAttribute("id", "checkCards");
         }
 
-        setTimeout(startHide, 1000);
+        setTimeout(startHide, 5000);
 
         getElement().game.append(img);
 
