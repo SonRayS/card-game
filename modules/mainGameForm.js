@@ -1,6 +1,7 @@
 import { getElement } from "./getElementById.js";
 import { renderLoseForm } from "./loseGameForm.js";
 import { renderWinForm } from "./winGameForm.js";
+import { renderStartForm } from "./selectLvlGameForm.js";
 
 export function formGameField({ appEl, lvl, pairs }) {
     /* ------------------------------------------------- */
@@ -27,6 +28,8 @@ export function formGameField({ appEl, lvl, pairs }) {
                                         </div>
                                 </div>
                         </div>
+
+                        <div><img  class="ico" src="./img/free-icon-watch-8839019.png"></img></div>
 
                         <div class="headForm-btn buttons">
                                 <button class="btn js-btm-reset">Начать заново</button>
@@ -87,12 +90,7 @@ export function formGameField({ appEl, lvl, pairs }) {
 
     getElement().start.addEventListener("click", () => {
         clearInterval(interval);
-        minute = 0;
-        second = 0;
-        millisecond = 0;
-        getElement().minEl.innerHTML = "00";
-        getElement().secEl.innerHTML = "." + "00";
-        setTimeout(waitStartTime, 5000);
+        renderStartForm({ appEl: getElement().appElement });
     });
 
     /* ------------------------------------------------- */
@@ -155,7 +153,6 @@ export function formGameField({ appEl, lvl, pairs }) {
     }
 
     shuffle(cardsArray);
-    console.log(cardsArray);
     //create grid
 
     switch (pairs) {
@@ -181,20 +178,16 @@ export function formGameField({ appEl, lvl, pairs }) {
             img.classList.add("flip-scale-up-hor");
             img.classList.add("cardHide");
             img.setAttribute("id", "checkCards");
+            getElement().ico.style.display = "none";
         }
 
         setTimeout(startHide, 5000);
+        getElement().ico.style.display = "flex";
 
         getElement().game.append(img);
 
         function startClick() {
             img.addEventListener("click", function () {
-                if (document.getElementById("checkCards") !== null) {
-                    console.log("Live");
-                } else {
-                    console.log("The element does not exist");
-                }
-
                 img.src = `./img/${i}`;
                 console.log("карта по которой клик", img);
 
@@ -217,8 +210,6 @@ export function formGameField({ appEl, lvl, pairs }) {
                 }
 
                 if (firstCard !== null && secundCard !== null) {
-                    console.log("2 cards open");
-
                     if (firstCard.src === secundCard.src) {
                         console.log("Карточки совпали");
                         firstCard.classList.add("hide");
@@ -237,8 +228,6 @@ export function formGameField({ appEl, lvl, pairs }) {
                             sec: getElement().secEl.innerHTML,
                         });
                     }, 400);
-                } else {
-                    console.log("You losee");
                 }
             });
         }

@@ -14,8 +14,12 @@ export function getElement() {
     const lableButton3 = document.querySelector(".lableButton3");
     const hides = document.querySelectorAll(".hide");
     const replay = document.querySelector(".difficultySelection_form-btn");
+    const headForm = document.querySelector(".headForm");
+    const ico = document.querySelector(".ico");
 
     const module = {
+        ico: ico,
+        headForm: headForm,
         replay: replay,
         hides: hides,
         lableButton1: lableButton1,
