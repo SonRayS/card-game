@@ -6,7 +6,7 @@ export function getElement() {
     const selectBtnTree = document.getElementById("radio3");
     const minEl = document.querySelector(".headFormField-timer_time-min");
     const secEl = document.querySelector(".headFormField-timer_time-sec");
-    const start = document.querySelector(".js-btm-reset");
+    const restartGame = document.querySelector(".js-btm-reset");
     const game = document.getElementById("game");
     const startGame = document.querySelector(".startGame");
     const lableButton1 = document.querySelector(".lableButton1");
@@ -27,7 +27,7 @@ export function getElement() {
         lableButton3: lableButton3,
         startGame: startGame,
         game: game,
-        start: start,
+        restartGame: restartGame,
         minEl: minEl,
         secEl: secEl,
         selectBtn: selectBtn,

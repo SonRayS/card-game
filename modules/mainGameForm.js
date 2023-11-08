@@ -88,11 +88,6 @@ export function formGameField({ appEl, lvl, pairs }) {
     }
     setTimeout(waitStartTime, 5000);
 
-    getElement().start.addEventListener("click", () => {
-        clearInterval(interval);
-        renderStartForm({ appEl: getElement().appElement });
-    });
-
     /* ------------------------------------------------- */
     /* CardLogic */
     /* ------------------------------------------------- */
@@ -174,6 +169,11 @@ export function formGameField({ appEl, lvl, pairs }) {
         img.src = `./img/${i}`;
 
         function startHide() {
+            getElement().restartGame.addEventListener("click", () => {
+                clearInterval(interval);
+                renderStartForm({ appEl: getElement().appElement });
+            });
+            getElement().restartGame.style.background = "#7ac100";
             img.setAttribute("src", "./img/hide.png");
             img.classList.add("flip-scale-up-hor");
             img.classList.add("cardHide");
@@ -183,6 +183,7 @@ export function formGameField({ appEl, lvl, pairs }) {
 
         setTimeout(startHide, 5000);
         getElement().ico.style.display = "flex";
+        getElement().restartGame.style.background = "red";
 
         getElement().game.append(img);
 
