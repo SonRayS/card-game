@@ -7,7 +7,7 @@ export function renderLoseForm({ appEl, min, sec }) {
                                 <div class="difficultySelection_forms">
                                         <img src="./img/dead.png" alt="">
                                         <li class="difficultySelection_form-text">
-                                        You lose!
+                                        Вы проиграли!
                                         </li>
                                 </div>
                         <div class="prod_checbox">

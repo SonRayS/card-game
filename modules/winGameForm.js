@@ -7,7 +7,7 @@ export function renderWinForm({ appEl, min, sec }) {
                                 <div class="difficultySelection_forms">
                                         <img src="./img/celebration.png" alt="">
                                         <li class="difficultySelection_form-text">
-                                        You Win!
+                                        Вы выиграли!
                                         </li>
                                 </div>
                         <div class="prod_checbox">
