@@ -178,3 +178,15 @@ li {
     font-feature-settings: "pnum" on, "lnum" on;
     color: #ffffff;
 }
+
+.hide {
+    transition: transform 0.7s ease-out;
+    backface-visibility: hidden;
+    transform: rotateY(180deg);
+}
+
+.cardHide {
+    width: 95px;
+    height: 133px;
+    background-image: url("./img/hide.png");
+}

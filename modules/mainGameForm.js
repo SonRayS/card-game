@@ -142,6 +142,9 @@ export function formGameField({ appEl, lvl, pairs }) {
         "Ac.png",
     ];
 
+    let firstCard = null;
+    let secundCard = null;
+
     const cardsArray = [];
 
     function shuffle(array) {
@@ -150,17 +153,57 @@ export function formGameField({ appEl, lvl, pairs }) {
 
     shuffle(cardsNumberArray);
 
-    for (let i = 1; i <= pairs; i++) {
+    for (let i = 1; i <= pairs; ++i) {
         cardsArray.push(cardsNumberArray[i], cardsNumberArray[i]);
     }
 
     shuffle(cardsArray);
+    console.log(cardsArray);
+    //create cards
 
     for (const i of cardsArray) {
         let img = document.createElement("img");
-        img.src = `./img/${i}`;
-        getElement().game.appendChild(img);
+        img.classList.add("cardHide");
+        img.setAttribute("id", `idName${i}`);
+        getElement().game.append(img);
+
+        img.addEventListener("click", function () {
+            if (firstCard !== null && secundCard !== null) {
+                console.log("Карточки не совпали");
+                firstCard.setAttribute("src", "./img/hide.png");
+                secundCard.setAttribute("src", "./img/hide.png");
+                firstCard = null;
+                secundCard = null;
+            }
+            img.src = `./img/${i}`;
+            console.log("карта по которой клик", img);
+
+            if (firstCard === null) {
+                firstCard = img;
+                console.log("firstCard", firstCard.src);
+                firstCard.classList.remove("cardHide");
+            } else if (secundCard === null) {
+                secundCard = img;
+                console.log("secundCard", secundCard.src);
+                secundCard.classList.remove("cardHide");
+            }
+
+            if (firstCard !== null && secundCard !== null) {
+                console.log("2 cards open");
+
+                if (firstCard.src === secundCard.src) {
+                    console.log("Карточки совпали");
+                    firstCard.classList.add("hide");
+                    secundCard.classList.add("hide");
+                    firstCard = null;
+                    secundCard = null;
+                }
+            }
+        });
     }
 
+    //create cards
     /* ------------------------------------------------- */
 }
+/* img.classList.add("hide"); */
+/* img.setAttribute("src", "https://picsum.photos/100"); */

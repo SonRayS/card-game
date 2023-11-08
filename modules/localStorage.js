@@ -1,6 +1,5 @@
 export function saveSelectLvl(lvl) {
     window.localStorage.setItem("lvl", JSON.stringify(lvl));
-    console.log(localStorage);
 }
 
 export function getSaveSelectLvl() {
