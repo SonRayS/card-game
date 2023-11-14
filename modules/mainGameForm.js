@@ -136,6 +136,7 @@ export function formGameField({ appEl, lvl, pairs }) {
     let secundCard = null;
 
     const cardsArray = [];
+    const arrayDuo = [];
 
     function shuffle(array) {
         array.sort(() => Math.random() - 0.5);
@@ -143,8 +144,11 @@ export function formGameField({ appEl, lvl, pairs }) {
 
     shuffle(cardsNumberArray);
 
-    for (let el = 1; el <= pairs; ++el) {
-        cardsArray.push(cardsNumberArray[el], cardsNumberArray[el]);
+    for (let i = 0, el = 1; el <= pairs, i < pairs * 2; ++el, i += 2) {
+        cardsArray.push(
+            { index: i, card: cardsNumberArray[el] },
+            { index: i + 1, card: cardsNumberArray[el] }
+        );
     }
 
     shuffle(cardsArray);
@@ -166,7 +170,8 @@ export function formGameField({ appEl, lvl, pairs }) {
 
     for (const i of cardsArray) {
         let img = document.createElement("img");
-        img.src = `./img/${i}`;
+        img.src = `./img/${i.card}`;
+        img.index = i.index;
 
         function startHide() {
             getElement().restartGame.addEventListener("click", () => {
@@ -178,6 +183,7 @@ export function formGameField({ appEl, lvl, pairs }) {
             img.classList.add("flip-scale-up-hor");
             img.classList.add("cardHide");
             img.setAttribute("id", "checkCards");
+            img.setAttribute("id", `${img.index}`);
             getElement().ico.style.display = "none";
         }
 
@@ -189,8 +195,8 @@ export function formGameField({ appEl, lvl, pairs }) {
 
         function startClick() {
             img.addEventListener("click", function () {
-                img.src = `./img/${i}`;
-                console.log("карта по которой клик", img);
+                img.src = `./img/${i.card}`;
+                console.log("карта по которой клик", img, img.index);
 
                 if (firstCard !== null && secundCard !== null) {
                     console.log("Карточки не совпали");
@@ -210,7 +216,11 @@ export function formGameField({ appEl, lvl, pairs }) {
                     secundCard.classList.add("flip-scale-up-hor");
                 }
 
-                if (firstCard !== null && secundCard !== null) {
+                if (
+                    firstCard !== null &&
+                    secundCard !== null &&
+                    firstCard.index !== secundCard.index
+                ) {
                     if (firstCard.src === secundCard.src) {
                         console.log("Карточки совпали");
                         firstCard.classList.add("hide");
