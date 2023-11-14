@@ -210,9 +210,14 @@ export function formGameField({ appEl, lvl, pairs }) {
 
                 if (firstCard === null) {
                     firstCard = img;
+                    console.log("firstCard", firstCard);
                     firstCard.classList.add("flip-scale-up-hor");
-                } else if (secundCard === null) {
+                } else if (
+                    secundCard === null &&
+                    firstCard.index !== img.index
+                ) {
                     secundCard = img;
+                    console.log("secundCard", secundCard);
                     secundCard.classList.add("flip-scale-up-hor");
                 }
 
