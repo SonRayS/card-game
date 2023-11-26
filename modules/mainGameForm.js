@@ -199,8 +199,8 @@ export function formGameField({ appEl, lvl, pairs }) {
                 console.log("карта по которой клик", img, img.index);
 
                 if (firstCard !== null && secundCard !== null) {
-                    console.log("Карточки не совпали");
                     clearInterval(interval);
+                    console.log("Карточки не совпали");
                     renderLoseForm({
                         appEl,
                         min: getElement().minEl.innerHTML,
