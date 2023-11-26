@@ -1,5 +1,5 @@
-import { renderStartForm } from "./selectLvlGameForm.js";
-import { getElement } from "./getElementById.js";
+import { renderStartForm } from './selectLvlGameForm.js';
+import { getElement } from './getElementById.js';
 
 export function renderWinForm({ appEl, min, sec }) {
     const appHtml = `
@@ -26,7 +26,7 @@ export function renderWinForm({ appEl, min, sec }) {
 
     appEl.innerHTML = appHtml;
 
-    getElement().replay.addEventListener("click", () => {
+    getElement().replay.addEventListener('click', () => {
         renderStartForm({ appEl: getElement().appElement });
     });
 }
