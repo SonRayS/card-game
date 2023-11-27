@@ -9,7 +9,7 @@
         "format": "prettier --write ./modules/**.js",
         "stylelint": "stylelint ./styles.css",
         "stylelint:fix": "stylelint ./styles.css --fix",
-        "build": "set NODE_ENV-production webpack"
+        "build": "production"
     },
     "author": "",
     "license": "ISC",
