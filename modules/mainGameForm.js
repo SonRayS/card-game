@@ -191,16 +191,6 @@ export function formGameField({ appEl, lvl, pairs }) {
                 img.src = `./img/${i.card}`;
                 console.log('карта по которой клик', img, img.index);
 
-                if (firstCard !== null && secundCard !== null) {
-                    clearInterval(interval);
-                    console.log('Карточки не совпали');
-                    renderLoseForm({
-                        appEl,
-                        min: getElement().minEl.innerHTML,
-                        sec: getElement().secEl.innerHTML,
-                    });
-                }
-
                 if (firstCard === null) {
                     firstCard = img;
                     console.log('firstCard', firstCard);
@@ -230,6 +220,16 @@ export function formGameField({ appEl, lvl, pairs }) {
                             sec: getElement().secEl.innerHTML,
                         });
                     }, 400);
+                }
+
+                if (firstCard !== null && secundCard !== null) {
+                    clearInterval(interval);
+                    console.log('Карточки не совпали');
+                    renderLoseForm({
+                        appEl,
+                        min: getElement().minEl.innerHTML,
+                        sec: getElement().secEl.innerHTML,
+                    });
                 }
             });
         }
