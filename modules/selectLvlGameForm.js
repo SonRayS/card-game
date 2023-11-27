@@ -1,6 +1,6 @@
-import { getElement } from './getElementById.js';
-import { saveSelectLvl, getSaveSelectLvl, removeSaveSelectLvl } from './localStorage.js';
-import { formGameField } from './mainGameForm.js';
+import { getElement } from "./getElementById.js";
+import { saveSelectLvl, getSaveSelectLvl, removeSaveSelectLvl } from "./localStorage.js";
+import { formGameField } from "./mainGameForm.js";
 
 export function renderStartForm({ appEl }) {
     const appHtml = `
@@ -49,25 +49,25 @@ export function renderStartForm({ appEl }) {
     appEl.innerHTML = appHtml;
 
     function selectBtnLvl() {
-        getElement().selectBtnOne.addEventListener('click', () => {
+        getElement().selectBtnOne.addEventListener("click", () => {
             saveSelectLvl(1);
-            getElement().lableButton2.classList.remove('active');
-            getElement().lableButton3.classList.remove('active');
-            getElement().lableButton1.classList.add('active');
+            getElement().lableButton2.classList.remove("active");
+            getElement().lableButton3.classList.remove("active");
+            getElement().lableButton1.classList.add("active");
         });
-        getElement().selectBtnTwo.addEventListener('click', () => {
+        getElement().selectBtnTwo.addEventListener("click", () => {
             saveSelectLvl(2);
-            getElement().lableButton1.classList.remove('active');
-            getElement().lableButton3.classList.remove('active');
-            getElement().lableButton2.classList.add('active');
+            getElement().lableButton1.classList.remove("active");
+            getElement().lableButton3.classList.remove("active");
+            getElement().lableButton2.classList.add("active");
         });
-        getElement().selectBtnTree.addEventListener('click', () => {
+        getElement().selectBtnTree.addEventListener("click", () => {
             saveSelectLvl(3);
-            getElement().lableButton1.classList.remove('active');
-            getElement().lableButton2.classList.remove('active');
-            getElement().lableButton3.classList.add('active');
+            getElement().lableButton1.classList.remove("active");
+            getElement().lableButton2.classList.remove("active");
+            getElement().lableButton3.classList.add("active");
         });
-        getElement().startGame.addEventListener('click', () => {
+        getElement().startGame.addEventListener("click", () => {
             if (getSaveSelectLvl() === 1) {
                 formGameField({
                     appEl: getElement().appElement,

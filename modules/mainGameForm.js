@@ -1,7 +1,7 @@
-import { getElement } from './getElementById.js';
-import { renderLoseForm } from './loseGameForm.js';
-import { renderWinForm } from './winGameForm.js';
-import { renderStartForm } from './selectLvlGameForm.js';
+import { getElement } from "./getElementById.js";
+import { renderLoseForm } from "./loseGameForm.js";
+import { renderWinForm } from "./winGameForm.js";
+import { renderStartForm } from "./selectLvlGameForm.js";
 
 export function formGameField({ appEl, lvl, pairs }) {
     /* ------------------------------------------------- */
@@ -36,7 +36,7 @@ export function formGameField({ appEl, lvl, pairs }) {
                         </div>
                 </div>
                 <div class="container">
-                ${pairs ? `<div id="game" class="game">` : alert('ВЫ не выбрали сложность !!!')}                
+                ${pairs ? `<div id="game" class="game">` : alert("ВЫ не выбрали сложность !!!")}                
                         </div>
                 </div>
                 `;
@@ -57,24 +57,24 @@ export function formGameField({ appEl, lvl, pairs }) {
 
         if (millisecond > 99) {
             second++;
-            getElement().secEl.innerHTML = '.' + '0' + second;
+            getElement().secEl.innerHTML = "." + "0" + second;
             millisecond = 0;
         }
 
         if (second <= 9) {
-            getElement().secEl.innerHTML = '.' + '0' + second;
+            getElement().secEl.innerHTML = "." + "0" + second;
         }
         if (second > 9) {
-            getElement().secEl.innerHTML = '.' + second;
+            getElement().secEl.innerHTML = "." + second;
         }
         if (second > 59) {
             minute++;
-            getElement().minEl.innerHTML = '0' + minute;
+            getElement().minEl.innerHTML = "0" + minute;
             second = 0;
-            getElement().secEl.innerHTML = '.' + '0' + second;
+            getElement().secEl.innerHTML = "." + "0" + second;
         }
         if (minute > 9) {
-            getElement().minEl.innerHTML = '.' + minute;
+            getElement().minEl.innerHTML = "." + minute;
         }
     }
 
@@ -90,42 +90,42 @@ export function formGameField({ appEl, lvl, pairs }) {
 
     //create ar
     const cardsNumberArray = [
-        '6b.png',
-        '6c.png',
-        '6k.png',
-        '6c.png',
-        '7b.png',
-        '7c.png',
-        '7k.png',
-        '7c.png',
-        '8b.png',
-        '8c.png',
-        '8k.png',
-        '8c.png',
-        '9b.png',
-        '9c.png',
-        '9k.png',
-        '9c.png',
-        '10b.png',
-        '10c.png',
-        '10k.png',
-        '10c.png',
-        'Jb.png',
-        'Jc.png',
-        'Jk.png',
-        'Jc.png',
-        'Qb.png',
-        'Qc.png',
-        'Qk.png',
-        'Qc.png',
-        'Kb.png',
-        'Kc.png',
-        'Kk.png',
-        'Kc.png',
-        'Ab.png',
-        'Ac.png',
-        'Ak.png',
-        'Ac.png',
+        "6b.png",
+        "6c.png",
+        "6k.png",
+        "6c.png",
+        "7b.png",
+        "7c.png",
+        "7k.png",
+        "7c.png",
+        "8b.png",
+        "8c.png",
+        "8k.png",
+        "8c.png",
+        "9b.png",
+        "9c.png",
+        "9k.png",
+        "9c.png",
+        "10b.png",
+        "10c.png",
+        "10k.png",
+        "10c.png",
+        "Jb.png",
+        "Jc.png",
+        "Jk.png",
+        "Jc.png",
+        "Qb.png",
+        "Qc.png",
+        "Qk.png",
+        "Qc.png",
+        "Kb.png",
+        "Kc.png",
+        "Kk.png",
+        "Kc.png",
+        "Ab.png",
+        "Ac.png",
+        "Ak.png",
+        "Ac.png",
     ];
 
     let firstCard = null;
@@ -162,50 +162,50 @@ export function formGameField({ appEl, lvl, pairs }) {
     //create cards
 
     for (const i of cardsArray) {
-        let img = document.createElement('img');
+        let img = document.createElement("img");
         img.src = `./img/${i.card}`;
         img.index = i.index;
 
         function startHide() {
-            getElement().restartGame.addEventListener('click', () => {
+            getElement().restartGame.addEventListener("click", () => {
                 clearInterval(interval);
                 renderStartForm({ appEl: getElement().appElement });
             });
-            getElement().restartGame.style.background = '#7ac100';
-            img.setAttribute('src', './img/hide.png');
-            img.classList.add('flip-scale-up-hor');
-            img.classList.add('cardHide');
-            img.setAttribute('id', 'checkCards');
-            img.setAttribute('id', `${img.index}`);
-            getElement().ico.style.display = 'none';
+            getElement().restartGame.style.background = "#7ac100";
+            img.setAttribute("src", "./img/hide.png");
+            img.classList.add("flip-scale-up-hor");
+            img.classList.add("cardHide");
+            img.setAttribute("id", "checkCards");
+            img.setAttribute("id", `${img.index}`);
+            getElement().ico.style.display = "none";
         }
 
         setTimeout(startHide, 5000);
-        getElement().ico.style.display = 'flex';
-        getElement().restartGame.style.background = 'red';
+        getElement().ico.style.display = "flex";
+        getElement().restartGame.style.background = "red";
 
         getElement().game.append(img);
 
         function startClick() {
-            img.addEventListener('click', function () {
+            img.addEventListener("click", function () {
                 img.src = `./img/${i.card}`;
-                console.log('карта по которой клик', img, img.index);
+                console.log("карта по которой клик", img, img.index);
 
                 if (firstCard === null) {
                     firstCard = img;
-                    console.log('firstCard', firstCard);
-                    firstCard.classList.add('flip-scale-up-hor');
+                    console.log("firstCard", firstCard);
+                    firstCard.classList.add("flip-scale-up-hor");
                 } else if (secundCard === null && firstCard.index !== img.index) {
                     secundCard = img;
-                    console.log('secundCard', secundCard);
-                    secundCard.classList.add('flip-scale-up-hor');
+                    console.log("secundCard", secundCard);
+                    secundCard.classList.add("flip-scale-up-hor");
                 }
 
                 if (firstCard !== null && secundCard !== null && firstCard.index !== secundCard.index) {
                     if (firstCard.src === secundCard.src) {
-                        console.log('Карточки совпали');
-                        firstCard.classList.add('hide');
-                        secundCard.classList.add('hide');
+                        console.log("Карточки совпали");
+                        firstCard.classList.add("hide");
+                        secundCard.classList.add("hide");
                         firstCard = null;
                         secundCard = null;
                     }
@@ -224,7 +224,7 @@ export function formGameField({ appEl, lvl, pairs }) {
 
                 if (firstCard !== null && secundCard !== null) {
                     clearInterval(interval);
-                    console.log('Карточки не совпали');
+                    console.log("Карточки не совпали");
                     renderLoseForm({
                         appEl,
                         min: getElement().minEl.innerHTML,
