@@ -7,16 +7,12 @@ const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 module.exports = {
     entry: "./index.js",
     mode: "development",
-    output: {
-        path: path.resolve(__dirname, "dist"),
-        filename: "bundle.js",
-        clean: true,
-    },
+
     module: {
         rules: [
             {
                 test: /\.css$/,
-                use: ["style-loader", "css-loader", "postcss-loader"],
+                use: [MiniCssExtractPlugin.loader, "css-loader"],
             },
             {
                 test: /\.(png|svg|jpg|jpeg|gif)$/i,
@@ -33,18 +29,28 @@ module.exports = {
         ],
     },
 
+    optimization: {
+        minimizer: ["...", new CssMinimizerPlugin()],
+    },
+
     devServer: {
         watchFiles: path.join(__dirname, "dist"),
         port: 3000,
+    },
+
+    devtool: "source-map",
+
+    output: {
+        path: path.resolve(__dirname, "dist"),
+        filename: "bundle.js",
+        clean: true,
     },
 
     plugins: [
         new CopyPlugin({
             patterns: [{ from: "img", to: "img" }],
         }),
-        new HtmlWebpackPlugin({
-            template: "./index.html",
-        }),
+        new HtmlWebpackPlugin(),
+        new MiniCssExtractPlugin(),
     ],
-    devtool: "source-map",
 };
