@@ -11,7 +11,7 @@
         "stylelint:fix": "stylelint ./styles.css --fix",
         "build": "webpack --mode production",
         "server": "webpack serve --open --mode development",
-        "dev": "webpack --mode development"
+        "dev": "webpack --mode"
     },
     "author": "",
     "license": "ISC",
