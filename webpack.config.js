@@ -6,13 +6,33 @@ const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
 module.exports = {
     entry: "./index.js",
-    mode: "development",
+    mode: "production",
+    output: {
+        path: path.resolve(__dirname, "dist"),
+        filename: "bundle.js",
+        clean: true,
+    },
+
+    plugins: [
+        new CopyPlugin({
+            patterns: [
+                { from: "img", to: "img" },
+                { from: "fonts", to: "fonts" },
+            ],
+        }),
+        new HtmlWebpackPlugin({ filename: "index.html", template: "./index.html" }),
+        new MiniCssExtractPlugin(),
+    ],
+
+    optimization: {
+        minimizer: ["...", new CssMinimizerPlugin()],
+    },
 
     module: {
         rules: [
             {
                 test: /\.css$/,
-                use: [MiniCssExtractPlugin.loader, "css-loader", "postcss-loader"],
+                use: [MiniCssExtractPlugin.loader, "css-loader"],
             },
             {
                 test: /\.(png|svg|jpg|jpeg|gif)$/i,
@@ -29,28 +49,8 @@ module.exports = {
         ],
     },
 
-    optimization: {
-        minimizer: ["...", new CssMinimizerPlugin()],
-    },
-
     devServer: {
         watchFiles: path.join(__dirname, "dist"),
         port: 3000,
     },
-
-    devtool: "source-map",
-
-    output: {
-        path: path.resolve(__dirname, "dist"),
-        filename: "bundle.js",
-        clean: true,
-    },
-
-    plugins: [
-        new CopyPlugin({
-            patterns: [{ from: "img", to: "img" }],
-        }),
-        new HtmlWebpackPlugin(),
-        new MiniCssExtractPlugin(),
-    ],
 };

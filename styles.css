@@ -4,12 +4,12 @@
     margin: 0;
     padding: 0;
 }
-/* stylelint-disable selector-class-pattern */
+
 @font-face {
     font-family: stratosskyengweb;
     src:
-        url("fonts/stratosskyengweb-regular.woff2") format("woff2"),
-        url("fonts/stratosskyengweb-regular.woff") format("woff");
+        url("./fonts/stratosskyengweb-regular.woff2") format("woff2"),
+        url("./fonts/stratosskyengweb-regular.woff") format("woff");
 }
 
 @keyframes flip-horizontal-bottom {
@@ -98,7 +98,6 @@ li {
     color: #004980;
     font-weight: 400;
     font-size: 40px;
-    font-family: stratosskyengweb, sans-serif;
     font-style: normal;
     line-height: 48px;
     text-align: center;
@@ -113,7 +112,6 @@ li {
     color: #fff;
     font-weight: 400;
     font-size: 24px;
-    font-family: stratosskyengweb, sans-serif;
     font-style: normal;
     line-height: 32px;
     text-align: center;
