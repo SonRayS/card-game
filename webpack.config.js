@@ -15,10 +15,7 @@ module.exports = {
 
     plugins: [
         new CopyPlugin({
-            patterns: [
-                { from: "img", to: "img" },
-                { from: "fonts", to: "fonts" },
-            ],
+            patterns: [{ from: "img", to: "img" }],
         }),
         new HtmlWebpackPlugin({ filename: "index.html", template: "./index.html" }),
         new MiniCssExtractPlugin(),
