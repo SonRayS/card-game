@@ -199,37 +199,40 @@ export function formGameField({ appEl, lvl, pairs }) {
                     secundCard = img;
                     console.log("secundCard", secundCard);
                     secundCard.classList.add("flip-scale-up-hor");
+                    setTimeout(watchTimer, 400);
                 }
 
-                if (firstCard !== null && secundCard !== null && firstCard.index !== secundCard.index) {
-                    if (firstCard.src === secundCard.src) {
-                        console.log("Карточки совпали");
-                        firstCard.classList.add("hide");
-                        secundCard.classList.add("hide");
-                        firstCard = null;
-                        secundCard = null;
+                function watchTimer() {
+                    if (firstCard !== null && secundCard !== null && firstCard.index !== secundCard.index) {
+                        if (firstCard.src === secundCard.src) {
+                            console.log("Карточки совпали");
+                            firstCard.classList.add("hide");
+                            secundCard.classList.add("hide");
+                            firstCard = null;
+                            secundCard = null;
+                        }
                     }
-                }
 
-                if (cardsArray.length === getElement().hides.length) {
-                    setTimeout(function () {
+                    if (cardsArray.length === getElement().hides.length) {
+                        setTimeout(function () {
+                            clearInterval(interval);
+                            renderWinForm({
+                                appEl,
+                                min: getElement().minEl.innerHTML,
+                                sec: getElement().secEl.innerHTML,
+                            });
+                        }, 400);
+                    }
+
+                    if (firstCard !== null && secundCard !== null) {
                         clearInterval(interval);
-                        renderWinForm({
+                        console.log("Карточки не совпали");
+                        renderLoseForm({
                             appEl,
                             min: getElement().minEl.innerHTML,
                             sec: getElement().secEl.innerHTML,
                         });
-                    }, 400);
-                }
-
-                if (firstCard !== null && secundCard !== null) {
-                    clearInterval(interval);
-                    console.log("Карточки не совпали");
-                    renderLoseForm({
-                        appEl,
-                        min: getElement().minEl.innerHTML,
-                        sec: getElement().secEl.innerHTML,
-                    });
+                    }
                 }
             });
         }
