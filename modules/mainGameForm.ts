@@ -128,23 +128,28 @@ export function formGameField({ appEl, lvl, pairs }: { appEl: HTMLElement; lvl: 
         "Ac.png",
     ];
 
-    let firstCard: any = null;
-    let secundCard: any = null;
+    let firstCard: null | any = null;
+    let secundCard: null | any = null;
 
     const cardsArray = [];
     const arrayDuo = [];
 
-    function shuffle(array: any) {
+    function shuffles(array: string[]) {
         array.sort(() => Math.random() - 0.5);
     }
 
-    shuffle(cardsNumberArray);
+    shuffles(cardsNumberArray);
 
     for (let i = 0, el = 1; /*  el <= pairs,  */ i < pairs * 2; ++el, i += 2) {
         cardsArray.push({ index: i, card: cardsNumberArray[el] }, { index: i + 1, card: cardsNumberArray[el] });
     }
 
+    function shuffle(array: { index?: number; card?: string }[]) {
+        array.sort(() => Math.random() - 0.5);
+    }
+
     shuffle(cardsArray);
+    console.log(cardsArray);
     //create grid
 
     switch (pairs) {
@@ -246,8 +251,3 @@ export function formGameField({ appEl, lvl, pairs }: { appEl: HTMLElement; lvl: 
         setTimeout(startClick, 5000);
     }
 }
-/* firstCard.parentNode.removeChild(firstCard); */
-/* firstCard.setAttribute("src", "./img/hide.png");
-   secundCard.setAttribute("src", "./img/hide.png");
-   firstCard = null;
-   secundCard = null; */
