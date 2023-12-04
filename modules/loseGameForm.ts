@@ -1,7 +1,7 @@
-import { renderStartForm } from "./selectLvlGameForm.js";
-import { getElement } from "./getElementById.js";
+import { renderStartForm } from "./selectLvlGameForm";
+import { getElement } from "./getElementById";
 
-export function renderLoseForm({ appEl, min, sec }) {
+export function renderLoseForm({ appEl, min, sec }: { appEl: HTMLElement; min: string; sec: string }) {
     const appHtml = `
                         <div class="difficultySelection main">
                                 <div class="difficultySelection_forms">

@@ -1,9 +1,9 @@
-import { getElement } from "./getElementById.js";
-import { renderLoseForm } from "./loseGameForm.js";
-import { renderWinForm } from "./winGameForm.js";
-import { renderStartForm } from "./selectLvlGameForm.js";
+import { getElement } from "./getElementById";
+import { renderLoseForm } from "./loseGameForm";
+import { renderWinForm } from "./winGameForm";
+import { renderStartForm } from "./selectLvlGameForm";
 
-export function formGameField({ appEl, lvl, pairs }) {
+export function formGameField({ appEl, lvl, pairs }: { appEl: HTMLElement; lvl: number; pairs: number }) {
     /* ------------------------------------------------- */
     /* HTML */
     /* ------------------------------------------------- */
@@ -47,7 +47,7 @@ export function formGameField({ appEl, lvl, pairs }) {
     /* timer */
     /* ------------------------------------------------- */
 
-    let interval;
+    let interval: any;
     let minute = 0;
     let second = 0;
     let millisecond = 0;
@@ -128,19 +128,19 @@ export function formGameField({ appEl, lvl, pairs }) {
         "Ac.png",
     ];
 
-    let firstCard = null;
-    let secundCard = null;
+    let firstCard: any = null;
+    let secundCard: any = null;
 
     const cardsArray = [];
     const arrayDuo = [];
 
-    function shuffle(array) {
+    function shuffle(array: any) {
         array.sort(() => Math.random() - 0.5);
     }
 
     shuffle(cardsNumberArray);
 
-    for (let i = 0, el = 1; el <= pairs, i < pairs * 2; ++el, i += 2) {
+    for (let i = 0, el = 1; /*  el <= pairs,  */ i < pairs * 2; ++el, i += 2) {
         cardsArray.push({ index: i, card: cardsNumberArray[el] }, { index: i + 1, card: cardsNumberArray[el] });
     }
 
@@ -149,12 +149,15 @@ export function formGameField({ appEl, lvl, pairs }) {
 
     switch (pairs) {
         case 3:
+            // @ts-ignore: error message
             game.style = `grid-template-columns: repeat(3, 1fr);`;
             break;
         case 6:
+            // @ts-ignore: error message
             game.style = `grid-template-columns: repeat(4, 1fr);`;
             break;
         case 9:
+            // @ts-ignore: error message
             game.style = `grid-template-columns: repeat(9, 2fr);`;
             break;
     }
@@ -164,8 +167,9 @@ export function formGameField({ appEl, lvl, pairs }) {
     for (const i of cardsArray) {
         let img = document.createElement("img");
         img.src = `./img/${i.card}`;
+        // @ts-ignore: error message
         img.index = i.index;
-
+        // @ts-ignore: error message
         function startHide() {
             getElement().restartGame.addEventListener("click", () => {
                 clearInterval(interval);
@@ -176,6 +180,7 @@ export function formGameField({ appEl, lvl, pairs }) {
             img.classList.add("flip-scale-up-hor");
             img.classList.add("cardHide");
             img.setAttribute("id", "checkCards");
+            // @ts-ignore: error message
             img.setAttribute("id", `${img.index}`);
             getElement().ico.style.display = "none";
         }
@@ -185,16 +190,18 @@ export function formGameField({ appEl, lvl, pairs }) {
         getElement().restartGame.style.background = "red";
 
         getElement().game.append(img);
-
+        // @ts-ignore: error message
         function startClick() {
             img.addEventListener("click", function () {
                 img.src = `./img/${i.card}`;
+                // @ts-ignore: error message
                 console.log("карта по которой клик", img, img.index);
 
                 if (firstCard === null) {
                     firstCard = img;
                     console.log("firstCard", firstCard);
                     firstCard.classList.add("flip-scale-up-hor");
+                    // @ts-ignore: error message
                 } else if (secundCard === null && firstCard.index !== img.index) {
                     secundCard = img;
                     console.log("secundCard", secundCard);
