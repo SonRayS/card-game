@@ -47,7 +47,7 @@ export function formGameField({ appEl, lvl, pairs }: { appEl: HTMLElement; lvl: 
     /* timer */
     /* ------------------------------------------------- */
 
-    let interval: any;
+    let interval: NodeJS.Timeout;
     let minute = 0;
     let second = 0;
     let millisecond = 0;
@@ -150,22 +150,6 @@ export function formGameField({ appEl, lvl, pairs }: { appEl: HTMLElement; lvl: 
 
     shuffle(cardsArray);
     console.log(cardsArray);
-    //create grid
-
-    switch (pairs) {
-        case 3:
-            // @ts-ignore: error message
-            game.style = `grid-template-columns: repeat(3, 1fr);`;
-            break;
-        case 6:
-            // @ts-ignore: error message
-            game.style = `grid-template-columns: repeat(4, 1fr);`;
-            break;
-        case 9:
-            // @ts-ignore: error message
-            game.style = `grid-template-columns: repeat(9, 2fr);`;
-            break;
-    }
 
     //create cards
 
