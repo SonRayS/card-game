@@ -140,7 +140,7 @@ export function formGameField({ appEl, lvl, pairs }: { appEl: HTMLElement; lvl: 
 
     shuffles(cardsNumberArray);
 
-    for (let i = 0, el = 1; /*  el <= pairs,  */ i < pairs * 2; ++el, i += 2) {
+    for (let i = 0, el = 1; i < pairs * 2; ++el, i += 2) {
         cardsArray.push({ index: i, card: cardsNumberArray[el] }, { index: i + 1, card: cardsNumberArray[el] });
     }
 
@@ -154,7 +154,7 @@ export function formGameField({ appEl, lvl, pairs }: { appEl: HTMLElement; lvl: 
     //create cards
 
     for (const i of cardsArray) {
-        let img = document.createElement("img");
+        const img = document.createElement("img");
         img.src = `./img/${i.card}`;
         // @ts-ignore: error message
         img.index = i.index;
@@ -183,8 +183,6 @@ export function formGameField({ appEl, lvl, pairs }: { appEl: HTMLElement; lvl: 
         function startClick() {
             img.addEventListener("click", function () {
                 img.src = `./img/${i.card}`;
-                // @ts-ignore: error message
-                console.log("карта по которой клик", img, img.index);
 
                 if (firstCard === null) {
                     firstCard = img;
