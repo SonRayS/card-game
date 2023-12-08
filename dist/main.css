@@ -1,1 +1,267 @@
-*{margin:0;padding:0}@font-face{font-family:stratosskyengweb;src:url(ce93393e831d32412096.woff2) format("woff2"),url(d7d99bd522cf2d77ce4a.woff) format("woff")}@keyframes flip-horizontal-bottom{0%{transform:rotateX(-180deg)}to{transform:rotateY(-180deg)}}@keyframes rotate-center{0%{transform:rotate(0)}to{transform:rotate(1turn)}}.center{padding-left:calc(50% - 550px);padding-right:calc(50% - 550px)}body{background-color:#0080c1;font-family:stratosskyengweb,sans-serif}li{list-style-type:none}.difficultySelection{align-items:center;background-color:#bcffff;border-radius:15px;display:flex;flex-flow:column nowrap;height:460px;place-content:center space-evenly;width:480px}.difficultySelection div{margin:10px}.main{left:50%;margin:-230px 0 0 -240px;position:absolute;top:50%}.difficultySelection_form{height:96px;top:210px;width:208px}.difficultySelection_form-text{font-feature-settings:"pnum" on,"lnum" on;color:#004980;font-size:40px;font-style:normal;font-weight:400;line-height:48px;text-align:center}.difficultySelection_form-btn{font-feature-settings:"pnum" on,"lnum" on;background:#7ac100;border-color:transparent;border-radius:12px;color:#fff;font-size:24px;font-style:normal;font-weight:400;height:48px;line-height:32px;text-align:center;width:246px}.radio-toolbar_input{display:none}.radio-toolbar{flex-flow:row nowrap}.lableButton1,.lableButton2,.lableButton3,.radio-toolbar{align-items:center;display:flex;place-content:center center}.lableButton1,.lableButton2,.lableButton3{background:#fff;border-radius:12px;color:#004980;flex-wrap:nowrap;font-size:64px;font-style:normal;font-weight:400;height:98px;line-height:72px;margin:14px;width:98px}.active{background-color:#85b10d;color:#fff}.headFormField{display:flex}.headFormField-timer{color:#fff}.headFormField-timer_time-min,.headFormField-timer_time-sec{font-size:64px;font-weight:400;line-height:72px}.headForm{display:flex;flex-flow:row nowrap;justify-content:space-between;margin-bottom:52px;margin-top:52px}.headForm-btn{align-items:center;display:flex}.headFormField-timer_title{display:flex;justify-content:flex-end;margin-right:4px}.game{display:grid;gap:28px;grid-template-columns:repeat(3,.1fr)}.container{align-items:center;display:flex;flex-flow:row nowrap;place-content:center center}.js-btm-reset{font-feature-settings:"pnum" on,"lnum" on;align-items:center;background:#7ac100;border-radius:12px;color:#fff;display:flex;font-size:24px;font-style:normal;font-weight:400;height:50px;justify-content:center;line-height:32px;text-align:center;width:246px}.hide{backface-visibility:hidden;transform:rotateY(180deg);transition:transform .4s ease-out}.cardHide{background-image:url(f6182d6403be8c841121.png);height:133px;width:95px}.flip-scale-up-hor{animation:flip-horizontal-bottom .6s cubic-bezier(.455,.03,.515,.955) both}.difficultySelection_text-time{font-feature-settings:"pnum" on,"lnum" on;color:#000;font-size:24px;font-weight:400;height:32px;line-height:32px;max-width:240px}.difficultySelection_forms{flex-flow:column nowrap}.difficultySelection_forms,.timerTimes{align-items:center;display:flex;place-content:center center}.timerTimes{color:#000;flex-flow:row nowrap;font-size:64px;font-weight:400;line-height:72px}.ico{animation:rotate-center 5s ease-in-out both;display:none;margin-left:84px;width:84px}
+/*!********************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js!./styles.css ***!
+  \********************************************************************************************************/
+@charset "UTF-8";
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+@font-face {
+    font-family: stratosskyengweb;
+    src:
+        url(ce93393e831d32412096.woff2) format("woff2"),
+        url(d7d99bd522cf2d77ce4a.woff) format("woff");
+}
+
+@keyframes flip-horizontal-bottom {
+    0% {
+        transform: rotateX(-180deg);
+    }
+
+    100% {
+        transform: rotateY(-180deg);
+    }
+}
+
+@keyframes rotate-center {
+    0% {
+        transform: rotate(0);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.center {
+    padding-right: calc(50% - 550px);
+    padding-left: calc(50% - 550px);
+}
+
+body {
+    font-family: stratosskyengweb, sans-serif;
+    background-color: #0080c1;
+}
+
+li {
+    list-style-type: none;
+}
+
+.difficultySelection {
+    display: flex;
+    flex-flow: column nowrap;
+    place-content: center space-evenly;
+    align-items: center;
+    width: 480px;
+    height: 460px;
+    background-color: rgb(188 255 255);
+    border-radius: 15px;
+}
+
+.difficultySelection div {
+    margin: 10px;
+}
+
+.main {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -230px 0 0 -240px;
+}
+
+.difficultySelection_form {
+    top: 210px;
+    width: 208px;
+    height: 96px;
+}
+
+.difficultySelection_form-text {
+    color: #004980;
+    font-weight: 400;
+    font-size: 40px;
+    font-style: normal;
+    line-height: 48px;
+    text-align: center;
+    font-feature-settings:
+        "pnum" on,
+        "lnum" on;
+}
+
+.difficultySelection_form-btn {
+    width: 246px;
+    height: 48px;
+    color: #fff;
+    font-weight: 400;
+    font-size: 24px;
+    font-style: normal;
+    line-height: 32px;
+    text-align: center;
+    background: #7ac100;
+    border-color: transparent;
+    border-radius: 12px;
+    font-feature-settings:
+        "pnum" on,
+        "lnum" on;
+}
+
+.radio-toolbar_input {
+    display: none;
+}
+
+.radio-toolbar {
+    display: flex;
+    flex-flow: row nowrap;
+    place-content: center center;
+    align-items: center;
+}
+
+.lableButton1,
+.lableButton2,
+.lableButton3 {
+    display: flex;
+    flex-wrap: nowrap;
+    place-content: center center;
+    align-items: center;
+    width: 98px;
+    height: 98px;
+    margin: 14px;
+    color: #004980;
+    font-weight: 400;
+    font-size: 64px;
+    font-style: normal;
+    line-height: 72px;
+    background: #fff;
+    border-radius: 12px;
+}
+
+.active {
+    color: #fff;
+    background-color: rgb(133 177 13);
+}
+
+.headFormField {
+    display: flex;
+}
+
+.headFormField-timer {
+    color: white;
+}
+
+.headFormField-timer_time-min {
+    font-weight: 400;
+    font-size: 64px;
+    line-height: 72px;
+}
+
+.headFormField-timer_time-sec {
+    font-weight: 400;
+    font-size: 64px;
+    line-height: 72px;
+}
+
+.headForm {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    margin-top: 52px;
+    margin-bottom: 52px;
+}
+
+.headForm-btn {
+    display: flex;
+    align-items: center;
+}
+
+.headFormField-timer_title {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 4px;
+}
+
+.game {
+    display: grid;
+    grid-template-columns: repeat(3, 0.1fr);
+    gap: 28px;
+}
+
+.container {
+    display: flex;
+    flex-flow: row nowrap;
+    place-content: center center;
+    align-items: center;
+}
+
+.js-btm-reset {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 246px;
+    height: 50px;
+    color: #fff;
+    font-weight: 400;
+    font-size: 24px;
+    font-style: normal;
+    line-height: 32px;
+    text-align: center;
+    background: #7ac100;
+    border-radius: 12px;
+    font-feature-settings:
+        "pnum" on,
+        "lnum" on;
+}
+
+.hide {
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+    transition: transform 0.4s ease-out;
+}
+
+.cardHide {
+    width: 95px;
+    height: 133px;
+    background-image: url(f6182d6403be8c841121.png);
+}
+
+.flip-scale-up-hor {
+    animation: flip-horizontal-bottom 0.6s cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
+}
+
+.difficultySelection_text-time {
+    max-width: 240px;
+    height: 32px;
+    color: #000;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 32px;
+    font-feature-settings:
+        "pnum" on,
+        "lnum" on;
+}
+
+.difficultySelection_forms {
+    display: flex;
+    flex-flow: column nowrap;
+    place-content: center center;
+    align-items: center;
+}
+
+.timerTimes {
+    display: flex;
+    flex-flow: row nowrap;
+    place-content: center center;
+    align-items: center;
+    color: #000;
+    font-weight: 400;
+    font-size: 64px;
+    line-height: 72px;
+}
+
+.ico {
+    display: none;
+    width: 84px;
+    margin-left: 84px;
+    animation: rotate-center 5s ease-in-out both;
+}
+
