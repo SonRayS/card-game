@@ -128,8 +128,8 @@ export function formGameField({ appEl, lvl, pairs }: { appEl: HTMLElement; lvl: 
         "Ac.png",
     ];
 
-    let firstCard: null | any = null;
-    let secundCard: null | any = null;
+    let firstCard: null | HTMLImageElement = null;
+    let secundCard: null | HTMLImageElement = null;
 
     const cardsArray = [];
     const arrayDuo = [];
@@ -156,8 +156,7 @@ export function formGameField({ appEl, lvl, pairs }: { appEl: HTMLElement; lvl: 
     for (const i of cardsArray) {
         const img = document.createElement("img");
         img.src = `./img/${i.card}`;
-        // @ts-ignore: error message
-        img.index = i.index;
+
         // @ts-ignore: error message
         function startHide() {
             getElement().restartGame.addEventListener("click", () => {
@@ -169,8 +168,8 @@ export function formGameField({ appEl, lvl, pairs }: { appEl: HTMLElement; lvl: 
             img.classList.add("flip-scale-up-hor");
             img.classList.add("cardHide");
             img.setAttribute("id", "checkCards");
-            // @ts-ignore: error message
-            img.setAttribute("id", `${img.index}`);
+
+            img.setAttribute("id", `${i.index}`);
             getElement().ico.style.display = "none";
         }
 
@@ -179,6 +178,7 @@ export function formGameField({ appEl, lvl, pairs }: { appEl: HTMLElement; lvl: 
         getElement().restartGame.style.background = "red";
 
         getElement().game.append(img);
+
         // @ts-ignore: error message
         function startClick() {
             img.addEventListener("click", function () {
@@ -186,18 +186,17 @@ export function formGameField({ appEl, lvl, pairs }: { appEl: HTMLElement; lvl: 
 
                 if (firstCard === null) {
                     firstCard = img;
-                    console.log("firstCard", firstCard);
+                    console.log("firstCard", firstCard, firstCard.id);
                     firstCard.classList.add("flip-scale-up-hor");
-                    // @ts-ignore: error message
-                } else if (secundCard === null && firstCard.index !== img.index) {
+                } else if (secundCard === null) {
                     secundCard = img;
-                    console.log("secundCard", secundCard);
+                    console.log("secundCard", secundCard, secundCard.id);
                     secundCard.classList.add("flip-scale-up-hor");
                     setTimeout(watchTimer, 400);
                 }
 
                 function watchTimer() {
-                    if (firstCard !== null && secundCard !== null && firstCard.index !== secundCard.index) {
+                    if (firstCard !== null && secundCard !== null && firstCard.id !== secundCard.id) {
                         if (firstCard.src === secundCard.src) {
                             console.log("Карточки совпали");
                             firstCard.classList.add("hide");
