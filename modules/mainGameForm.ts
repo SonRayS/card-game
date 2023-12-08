@@ -2,6 +2,7 @@ import { getElement } from "./getElementById";
 import { startHide } from "./funcGame";
 import { startClick } from "./funcGame";
 import { waitStartTime } from "./funcGame";
+import type { Card } from "./types";
 
 export function formGameField({ appEl, lvl, pairs }: { appEl: HTMLElement; lvl: number; pairs: number }) {
     /* ------------------------------------------------- */
@@ -93,11 +94,7 @@ export function formGameField({ appEl, lvl, pairs }: { appEl: HTMLElement; lvl: 
         "Ac.png",
     ];
 
-    let firstCard: null | HTMLImageElement = null;
-    let secundCard: null | HTMLImageElement = null;
-
-    const cardsArray = [];
-    const arrayDuo = [];
+    const cardsArray: Card[] = [];
 
     function shuffles(array: string[]) {
         array.sort(() => Math.random() - 0.5);
@@ -109,7 +106,7 @@ export function formGameField({ appEl, lvl, pairs }: { appEl: HTMLElement; lvl: 
         cardsArray.push({ index: i, card: cardsNumberArray[el] }, { index: i + 1, card: cardsNumberArray[el] });
     }
 
-    function shuffle(array: { index?: number; card?: string }[]) {
+    function shuffle(array: Card[]) {
         array.sort(() => Math.random() - 0.5);
     }
 
@@ -118,26 +115,25 @@ export function formGameField({ appEl, lvl, pairs }: { appEl: HTMLElement; lvl: 
     //create cards
 
     for (const i of cardsArray) {
-        let img = document.createElement("img");
+        const img = document.createElement("img");
         img.src = `./img/${i.card}`;
-        let arrayIndex: number = i.index;
-        console.log(arrayIndex);
+        const arrayIndex: number = i.index;
 
-        startHide({ img: img, index: arrayIndex });
-        setTimeout(startHide, 5000);
+        setTimeout(function () {
+            startHide({ img: img, index: arrayIndex });
+        }, 5000);
 
         getElement().ico.style.display = "flex";
         getElement().restartGame.style.background = "red";
         getElement().game.append(img);
 
-        /*         startClick({
-            img: img,
-            firstCard: firstCard,
-            secundCard: secundCard,
-            appEl: appEl,
-            cardsArray: cardsArray,
-            src: img.src,
-        });
-        setTimeout(startClick, 5000); */
+        setTimeout(function () {
+            startClick({
+                img,
+                appEl,
+                cardsArray: cardsArray,
+                src: i.card,
+            });
+        }, 5000);
     }
 }

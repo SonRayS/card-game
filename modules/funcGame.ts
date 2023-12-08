@@ -8,6 +8,9 @@ let minute = 0;
 let second = 0;
 let millisecond = 0;
 
+let firstCard: null | HTMLImageElement = null;
+let secundCard: null | HTMLImageElement = null;
+
 function startTimer() {
     millisecond++;
 
@@ -66,29 +69,25 @@ ______________________________________________________ */
 
 export function startClick({
     img,
-    firstCard,
-    secundCard,
     appEl,
     cardsArray,
     src,
 }: {
     img: HTMLImageElement;
-    firstCard: null | HTMLImageElement;
-    secundCard: null | HTMLImageElement;
     appEl: HTMLElement;
     cardsArray: { index: number; card: string }[];
     src: string;
 }) {
     img.addEventListener("click", function () {
-        img.src = src;
+        img.src = `./img/${src}`;
 
         if (firstCard === null) {
             firstCard = img;
-            console.log("firstCard", firstCard, firstCard.id);
+            console.log("firstCard", firstCard);
             firstCard.classList.add("flip-scale-up-hor");
         } else if (secundCard === null) {
             secundCard = img;
-            console.log("secundCard", secundCard, secundCard.id);
+            console.log("secundCard", secundCard);
             secundCard.classList.add("flip-scale-up-hor");
             setTimeout(watchTimer, 400);
         }
