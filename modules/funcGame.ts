@@ -37,6 +37,9 @@ function startTimer() {
 }
 
 export function waitStartTime() {
+    minute = 0;
+    second = 0;
+    millisecond = 0;
     clearInterval(interval);
     interval = setInterval(startTimer, 10);
 }
@@ -113,7 +116,7 @@ export function startClick({
                         sec: getElement().secEl.innerHTML,
                         resultGame,
                     });
-                }, 300);
+                }, 200);
             }
 
             if (firstCard !== null && secundCard !== null) {
@@ -127,7 +130,7 @@ export function startClick({
                         min: getElement().minEl.innerHTML,
                         sec: getElement().secEl.innerHTML,
                     });
-                }, 300);
+                }, 200);
             }
         }
     });
