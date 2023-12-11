@@ -112,6 +112,21 @@ export function formGameField({ appEl, lvl, pairs }: { appEl: HTMLElement; lvl: 
 
     shuffle(cardsArray);
 
+    switch (pairs) {
+        case 3:
+            // @ts-ignore: error message
+            game.style = `grid-template-columns: repeat(3, 1fr);`;
+            break;
+        case 6:
+            // @ts-ignore: error message
+            game.style = `grid-template-columns: repeat(4, 1fr);`;
+            break;
+        case 9:
+            // @ts-ignore: error message
+            game.style = `grid-template-columns: repeat(9, 2fr);`;
+            break;
+    }
+
     //create cards
     const resultGame: number = 1;
 
