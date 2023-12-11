@@ -30,7 +30,7 @@ export function formGameField({ appEl, lvl, pairs }: { appEl: HTMLElement; lvl: 
                                 </div>
                         </div>
 
-                        <div><img  class="ico" src="./img/free-icon-watch-8839019.png"></img></div>
+                        <div><img  class="ico" src="./img/forward.png"></img></div>
 
                         <div class="headForm-btn buttons">
                                 <button class="btn js-btm-reset">Начать заново</button>
