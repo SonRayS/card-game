@@ -115,15 +115,15 @@ export function formGameField({ appEl, lvl, pairs }: { appEl: HTMLElement; lvl: 
     switch (pairs) {
         case 3:
             // @ts-ignore: error message
-            game.style = `grid-template-columns: repeat(3, 1fr);`;
+            getElement().game.style.gridTemplateColumns = `repeat(3, 1fr);`;
             break;
         case 6:
             // @ts-ignore: error message
-            game.style = `grid-template-columns: repeat(4, 1fr);`;
+            getElement().game.style.gridTemplateColumns = `repeat(4, 1fr);`;
             break;
         case 9:
             // @ts-ignore: error message
-            game.style = `grid-template-columns: repeat(9, 2fr);`;
+            getElement().game.style.gridTemplateColumns = `repeat(9, 2fr);`;
             break;
     }
 
