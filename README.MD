@@ -1,6 +1,6 @@
 <a name="CardGame"></a>
 
-![Alt-picture of the game](img/readme.PNG)
+![Alt-picture of the game](./img/readme.PNG)
 
 # Development information
 
