@@ -209,6 +209,7 @@ li {
     line-height: 32px;
     text-align: center;
     background: #7ac100;
+    border: none;
     border-radius: 12px;
     font-feature-settings:
         "pnum" on,
