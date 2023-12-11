@@ -4,7 +4,7 @@
 <img src="https://github.com/blackcater/blackcater/raw/main/images/Hi.gif" height="32"/></h1>
 <h3 align="center">Playing in pairs</h3>
 
-<center><img src="img/readme.PNG" height="128"/></h1></center>
+<img align="middle" src="img/readme.PNG" height="128"/></h1>
 
 # Development information
 
