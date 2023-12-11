@@ -1,5 +1,5 @@
 import { getElement } from "./getElementById";
-import { saveSelectLvl, getSaveSelectLvl, removeSaveSelectLvl } from "./localStorage";
+import { saveSelectLvl, getSaveSelectLvl } from "./localStorage";
 import { formGameField } from "./mainGameForm";
 
 export function renderStartForm({ appEl }: { appEl: HTMLElement }) {

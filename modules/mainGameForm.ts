@@ -113,6 +113,7 @@ export function formGameField({ appEl, lvl, pairs }: { appEl: HTMLElement; lvl: 
     shuffle(cardsArray);
 
     //create cards
+    const resultGame: number = 1;
 
     for (const i of cardsArray) {
         const img = document.createElement("img");
@@ -133,6 +134,7 @@ export function formGameField({ appEl, lvl, pairs }: { appEl: HTMLElement; lvl: 
                 appEl,
                 cardsArray: cardsArray,
                 src: i.card,
+                resultGame: resultGame,
             });
         }, 5000);
     }

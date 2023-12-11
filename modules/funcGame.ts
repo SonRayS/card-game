@@ -1,6 +1,5 @@
 import { getElement } from "./getElementById";
-import { renderLoseForm } from "./loseGameForm";
-import { renderWinForm } from "./winGameForm";
+import { renderResultForm } from "./resultGameForm";
 import { renderStartForm } from "./selectLvlGameForm";
 
 let interval: NodeJS.Timeout;
@@ -72,11 +71,13 @@ export function startClick({
     appEl,
     cardsArray,
     src,
+    resultGame,
 }: {
     img: HTMLImageElement;
     appEl: HTMLElement;
     cardsArray: { index: number; card: string }[];
     src: string;
+    resultGame: number;
 }) {
     img.addEventListener("click", function () {
         img.src = `./img/${src}`;
@@ -106,22 +107,27 @@ export function startClick({
             if (cardsArray.length === getElement().hides.length) {
                 setTimeout(function () {
                     clearInterval(interval);
-                    renderWinForm({
+                    renderResultForm({
+                        appEl,
+                        min: getElement().minEl.innerHTML,
+                        sec: getElement().secEl.innerHTML,
+                        resultGame,
+                    });
+                }, 300);
+            }
+
+            if (firstCard !== null && secundCard !== null) {
+                setTimeout(function () {
+                    clearInterval(interval);
+                    console.log("Карточки не совпали");
+                    firstCard = null;
+                    secundCard = null;
+                    renderResultForm({
                         appEl,
                         min: getElement().minEl.innerHTML,
                         sec: getElement().secEl.innerHTML,
                     });
-                }, 400);
-            }
-
-            if (firstCard !== null && secundCard !== null) {
-                clearInterval(interval);
-                console.log("Карточки не совпали");
-                renderLoseForm({
-                    appEl,
-                    min: getElement().minEl.innerHTML,
-                    sec: getElement().secEl.innerHTML,
-                });
+                }, 300);
             }
         }
     });
