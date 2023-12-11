@@ -1,13 +1,27 @@
-import { renderStartForm } from "./selectLvlGameForm.js";
-import { getElement } from "./getElementById.js";
+import { renderStartForm } from "./selectLvlGameForm";
+import { getElement } from "./getElementById";
 
-export function renderLoseForm({ appEl, min, sec }) {
+export function renderResultForm({
+    appEl,
+    min,
+    sec,
+    resultGame,
+}: {
+    appEl: HTMLElement;
+    min: string;
+    sec: string;
+    resultGame?: number;
+}) {
     const appHtml = `
                         <div class="difficultySelection main">
                                 <div class="difficultySelection_forms">
-                                        <img src="./img/dead.png" alt="">
+                                ${
+                                    resultGame
+                                        ? '<img src="./img/celebration.png" alt="">'
+                                        : '<img src="./img/dead.png" alt="">'
+                                }
                                         <li class="difficultySelection_form-text">
-                                        Вы проиграли!
+                                        ${resultGame ? "Вы выиграли!" : "Вы проиграли!"}
                                         </li>
                                 </div>
                         <div class="prod_checbox">

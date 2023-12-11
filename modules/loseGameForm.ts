@@ -1,13 +1,13 @@
-import { renderStartForm } from "./selectLvlGameForm.js";
-import { getElement } from "./getElementById.js";
+import { renderStartForm } from "./selectLvlGameForm";
+import { getElement } from "./getElementById";
 
-export function renderWinForm({ appEl, min, sec }) {
+export function renderLoseForm({ appEl, min, sec }: { appEl: HTMLElement; min: string; sec: string }) {
     const appHtml = `
                         <div class="difficultySelection main">
                                 <div class="difficultySelection_forms">
-                                        <img src="./img/celebration.png" alt="">
+                                        <img src="./img/dead.png" alt="">
                                         <li class="difficultySelection_form-text">
-                                        Вы выиграли!
+                                        Вы проиграли!
                                         </li>
                                 </div>
                         <div class="prod_checbox">
