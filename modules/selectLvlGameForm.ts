@@ -1,8 +1,8 @@
-import { getElement } from "./getElementById.js";
-import { saveSelectLvl, getSaveSelectLvl, removeSaveSelectLvl } from "./localStorage.js";
-import { formGameField } from "./mainGameForm.js";
+import { getElement } from "./getElementById";
+import { saveSelectLvl, getSaveSelectLvl } from "./localStorage";
+import { formGameField } from "./mainGameForm";
 
-export function renderStartForm({ appEl }) {
+export function renderStartForm({ appEl }: { appEl: HTMLElement }) {
     const appHtml = `
     <div class="difficultySelection main">
     <div class="difficultySelection_form">

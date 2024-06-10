@@ -1,2 +1,4 @@
 node_module/
 dist/index.html
+README.MD
+jest.config.ts
